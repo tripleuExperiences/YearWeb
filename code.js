@@ -8,18 +8,18 @@ const tickerTrack = document.getElementById('tickerTrack');
 const celebrationEmojis = ['🎉', '✨', '💖', '🥳', '🎊', '💫', '🪩', '⭐', '🍾', '💥'];
 
 const tickerItems = [
-	{ type: 'text', value: 'Feliz aniversario' },
-	{ type: 'image', label: 'Imagen 01', srcHint: 'src aquí' },
+	{ type: 'text', value: 'Nuestro primer año juntitos' },
+	{ type: 'image', label: 'Imagen 01', src: './_Images/img1.jpg' },
 	{ type: 'text', value: 'Gracias por cada momento' },
-	{ type: 'image', label: 'Imagen 02', srcHint: 'src aquí' },
+	{ type: 'image', label: 'Imagen 02', src: './_Images/img4.jpg' },
 	{ type: 'text', value: 'Siempre juntos' },
-	{ type: 'image', label: 'Imagen 03', srcHint: 'src aquí' },
+	{ type: 'image', label: 'Imagen 03', src: './_Images/img3.jpg' },
 	{ type: 'text', value: 'Más recuerdos por crear' },
-	{ type: 'image', label: 'Imagen 04', srcHint: 'src aquí' },
+	{ type: 'image', label: 'Imagen 04', src: './_Images/img2.jpg' },
 	{ type: 'text', value: 'Otro recuerdo más' },
-	{ type: 'image', label: 'Imagen 05', srcHint: 'src aquí' },
+	{ type: 'image', label: 'Imagen 05', src: './_Images/img5.jpg' },
 	{ type: 'text', value: 'Lo mejor todavía viene' },
-	{ type: 'image', label: 'Imagen 06', srcHint: 'src aquí' },
+	{ type: 'image', label: 'Imagen 06', src: './_Images/img6.jpeg' },
 ];
 
 let celebrationStarted = false;
@@ -96,9 +96,12 @@ function renderTickerItem(item) {
 
 	card.classList.add('ticker-card--image');
 
-	const frame = document.createElement('span');
-	frame.innerHTML = `${item.label}<small>${item.srcHint}</small>`;
-	card.appendChild(frame);
+	const image = document.createElement('img');
+	image.className = 'ticker-card__image';
+	image.src = item.src;
+	image.alt = item.label;
+
+	card.appendChild(image);
 
 	return card;
 }
