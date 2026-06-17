@@ -8,14 +8,14 @@
 	--button: #ff5c8a;
 	--button-hover: #ff3f74;
 	--button-shadow: rgba(0, 0, 0, 0.16);
-	--panel: rgba(255, 255, 255, 0.18);
 	--panel-border: rgba(255, 255, 255, 0.25);
 	--text: #fff8ff;
 	--heart: #ff4f87;
 	--heart-glow: rgba(255, 79, 135, 0.55);
 }
 
-html, body {
+html,
+body {
 	min-height: 100%;
 }
 
@@ -40,7 +40,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: clamp(20px, 4vw, 36px);
+	gap: clamp(8px, 1.8vw, 18px);
 	padding: clamp(16px, 4vw, 40px);
 }
 
@@ -82,6 +82,10 @@ body {
 
 .center-button.is-exiting {
 	pointer-events: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	animation: buttonDisappear 680ms ease forwards;
 }
 
@@ -97,13 +101,13 @@ body {
 }
 
 .heart-stage {
-	width: min(92vw, 560px);
+	width: min(82vmin, 620px);
 	aspect-ratio: 1 / 1;
-	position: absolute;
-	left: 50%;
-	top: 50%;
+	max-width: 620px;
+	position: relative;
+	margin-top: clamp(0px, 0.4vw, 4px);
 	opacity: 0;
-	transform: translate(-50%, -50%) scale(0.92);
+	transform: scale(0.92);
 	transition: opacity 400ms ease, transform 500ms ease;
 	filter: drop-shadow(0 0 18px rgba(255, 79, 135, 0.18));
 	pointer-events: none;
@@ -111,7 +115,7 @@ body {
 
 .heart-stage.is-visible {
 	opacity: 1;
-	transform: translate(-50%, -50%) scale(1);
+	transform: scale(1);
 }
 
 .heart-grid {
@@ -121,8 +125,8 @@ body {
 
 .heart-dot {
 	position: absolute;
-	width: clamp(8px, 1.3vw, 14px);
-	height: clamp(8px, 1.3vw, 14px);
+	width: clamp(9px, 1.5vw, 16px);
+	height: clamp(9px, 1.5vw, 16px);
 	border-radius: 50%;
 	background: radial-gradient(circle at 35% 35%, #fff6fb 0%, #ff9cbc 28%, var(--heart) 70%, #d82463 100%);
 	box-shadow: 0 0 10px var(--heart-glow), 0 0 18px rgba(255, 79, 135, 0.25);
@@ -133,47 +137,55 @@ body {
 }
 
 .ticker-shell {
-	width: min(100%, 1100px);
-	position: absolute;
-	left: 50%;
-	bottom: clamp(16px, 4vw, 36px);
-	border-radius: 999px;
-	padding: 14px 0;
+	width: min(94vw, 1600px);
+	height: clamp(230px, 36svh, 430px);
+	min-height: clamp(230px, 36svh, 430px);
+	position: relative;
+	margin-inline: auto;
+	margin-top: clamp(0px, 0.4vw, 6px);
+	border-radius: clamp(18px, 2.6vw, 28px);
+	padding: clamp(18px, 2.4vw, 30px) 0;
 	background: rgba(255, 255, 255, 0.16);
 	border: 1px solid var(--panel-border);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
 	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
 	overflow: hidden;
 	opacity: 0;
-	transform: translateX(-50%) translateY(20px);
+	transform: translateY(10px);
 	transition: opacity 500ms ease, transform 500ms ease;
 	pointer-events: none;
 }
 
 .ticker-shell.is-visible {
 	opacity: 1;
-	transform: translateX(-50%) translateY(0);
+	transform: translateY(0);
 }
 
 .ticker-track {
 	display: flex;
+	align-items: center;
+	height: 100%;
 	width: max-content;
-	gap: 24px;
-	padding-inline: 18px;
-	animation: tickerScroll 24s linear infinite;
+	gap: clamp(28px, 3vw, 44px);
+	padding-inline: clamp(20px, 2.6vw, 34px);
+	animation: tickerScroll 46s linear infinite;
 	will-change: transform;
 }
 
 .ticker-group {
 	display: flex;
-	gap: 24px;
+	align-items: center;
+	height: 100%;
+	gap: clamp(28px, 3vw, 44px);
 }
 
 .ticker-card {
 	flex: 0 0 auto;
-	width: clamp(150px, 26vw, 250px);
-	min-height: clamp(72px, 12vw, 110px);
-	padding: 16px 18px;
-	border-radius: 24px;
+	width: clamp(380px, 35vw, 600px);
+	min-height: clamp(190px, 24vw, 280px);
+	padding: clamp(30px, 3.6vw, 46px);
+	border-radius: clamp(12px, 1.8vw, 20px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -185,7 +197,7 @@ body {
 }
 
 .ticker-card--text {
-	font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+	font-size: clamp(1.4rem, 2.7vw, 2.2rem);
 	font-weight: 700;
 	letter-spacing: 0.02em;
 }
@@ -196,7 +208,7 @@ body {
 		linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.1)),
 		repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 10px, rgba(255, 255, 255, 0.04) 10px 20px);
 	color: rgba(255, 255, 255, 0.92);
-	font-size: 0.95rem;
+	font-size: 1.35rem;
 	font-weight: 700;
 }
 
@@ -206,9 +218,98 @@ body {
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	border-radius: 18px;
+	border-radius: 12px;
 	border: 2px dashed rgba(255, 255, 255, 0.5);
-	padding: 12px;
+	padding: 26px;
+}
+
+@media (min-width: 900px) {
+	.app {
+		justify-content: flex-start;
+		gap: 10px;
+		padding-top: clamp(12px, 2.8vh, 28px);
+	}
+
+	.heart-stage {
+		width: min(68vmin, 520px);
+		max-width: 520px;
+		height: min(68vmin, 520px);
+		margin-top: 0;
+	}
+
+	.ticker-shell {
+		height: clamp(190px, 28svh, 300px);
+		min-height: clamp(190px, 28svh, 300px);
+		margin-top: -22px;
+	}
+
+	.ticker-card {
+		width: clamp(280px, 24vw, 440px);
+		min-height: clamp(150px, 18vw, 210px);
+	}
+}
+
+@media (max-width: 899px) {
+	.app {
+		justify-content: center;
+		gap: 12px;
+		padding: 12px 12px 18px;
+	}
+
+	.center-button {
+		width: min(92vw, 380px);
+		padding: 16px 28px;
+		font-size: clamp(16px, 4.6vw, 20px);
+	}
+
+	.heart-stage {
+		width: min(82vw, 420px);
+		height: min(82vw, 420px);
+		max-width: 420px;
+	}
+
+	.ticker-shell {
+		width: 96vw;
+		height: clamp(170px, 30svh, 260px);
+		min-height: clamp(170px, 30svh, 260px);
+		margin-top: 0;
+		padding: 14px 0;
+		border-radius: 20px;
+	}
+
+	.ticker-track {
+		gap: 18px;
+		padding-inline: 16px;
+		animation-duration: 34s;
+	}
+
+	.ticker-group {
+		gap: 18px;
+	}
+
+	.ticker-card {
+		width: clamp(220px, 72vw, 300px);
+		min-height: clamp(120px, 28vw, 160px);
+		padding: 18px 18px;
+		border-radius: 14px;
+	}
+
+	.ticker-card--text {
+		font-size: clamp(1rem, 4.2vw, 1.35rem);
+	}
+
+	.ticker-card--image {
+		font-size: 1rem;
+	}
+
+	.ticker-card--image span {
+		padding: 16px;
+		border-radius: 10px;
+	}
+
+	.ticker-card--image small {
+		font-size: 0.88rem;
+	}
 }
 
 .ticker-card--image small {

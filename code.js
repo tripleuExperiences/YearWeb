@@ -15,6 +15,11 @@ const tickerItems = [
 	{ type: 'text', value: 'Siempre juntos' },
 	{ type: 'image', label: 'Imagen 03', srcHint: 'src aquí' },
 	{ type: 'text', value: 'Más recuerdos por crear' },
+	{ type: 'image', label: 'Imagen 04', srcHint: 'src aquí' },
+	{ type: 'text', value: 'Otro recuerdo más' },
+	{ type: 'image', label: 'Imagen 05', srcHint: 'src aquí' },
+	{ type: 'text', value: 'Lo mejor todavía viene' },
+	{ type: 'image', label: 'Imagen 06', srcHint: 'src aquí' },
 ];
 
 let celebrationStarted = false;
@@ -126,13 +131,13 @@ function startCelebration() {
 		buildHeart();
 		heartStage.classList.add('is-visible');
 		heartStage.setAttribute('aria-hidden', 'false');
-	}, 720);
+	}, 600);
 
 	window.setTimeout(() => {
 		buildTicker();
 		tickerShell.classList.add('is-visible');
 		tickerShell.setAttribute('aria-hidden', 'false');
-	}, 1450);
+	}, 950);
 }
 
 celebrateButton.addEventListener('click', startCelebration);
