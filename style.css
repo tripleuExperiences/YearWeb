@@ -1,0 +1,282 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--bg-top: #f8c6d4;
+	--bg-bottom: #ffe7a3;
+	--button: #ff5c8a;
+	--button-hover: #ff3f74;
+	--button-shadow: rgba(0, 0, 0, 0.16);
+	--panel: rgba(255, 255, 255, 0.18);
+	--panel-border: rgba(255, 255, 255, 0.25);
+	--text: #fff8ff;
+	--heart: #ff4f87;
+	--heart-glow: rgba(255, 79, 135, 0.55);
+}
+
+html, body {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	min-height: 100svh;
+	overflow: hidden;
+	font-family: Arial, sans-serif;
+		width: min(96vw, 760px);
+	background:
+		radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.22), transparent 24%),
+		radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.2), transparent 18%),
+		top: 46%;
+		linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+}
+
+.app {
+	position: relative;
+	min-height: 100svh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+		width: clamp(9px, 1.5vw, 16px);
+		height: clamp(9px, 1.5vw, 16px);
+	gap: clamp(20px, 4vw, 36px);
+	padding: clamp(16px, 4vw, 40px);
+}
+
+.celebration-layer {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+		width: min(96vw, 1440px);
+}
+
+		bottom: clamp(10px, 3vw, 24px);
+	width: min(100%, 460px);
+		padding: 18px 0;
+	border: none;
+	border-radius: clamp(28px, 5vw, 38px);
+	background: linear-gradient(135deg, var(--button), #ff7aaa);
+	color: white;
+	font-size: clamp(18px, 3vw, 24px);
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 18px 35px var(--button-shadow);
+		gap: 30px;
+		padding-inline: 22px;
+		animation: tickerScroll 30s linear infinite;
+	z-index: 2;
+}
+
+.center-button:hover {
+	background: linear-gradient(135deg, var(--button-hover), #ff6293);
+		gap: 30px;
+	box-shadow: 0 24px 40px rgba(0, 0, 0, 0.22);
+}
+
+.center-button:focus-visible {
+		width: clamp(180px, 22vw, 310px);
+		min-height: clamp(86px, 14vw, 130px);
+		padding: 18px 20px;
+		border-radius: 28px;
+.center-button.is-exiting {
+	pointer-events: none;
+	animation: buttonDisappear 680ms ease forwards;
+}
+
+.particle {
+		font-size: clamp(1rem, 1.75vw, 1.35rem);
+	left: 50%;
+	top: 50%;
+	font-size: clamp(18px, 3.2vw, 34px);
+	transform: translate(-50%, -50%);
+	animation: particleBurst 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	will-change: transform, opacity;
+	text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+.heart-stage {
+		font-size: 1rem;
+	aspect-ratio: 1 / 1;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.92);
+	transition: opacity 400ms ease, transform 500ms ease;
+	filter: drop-shadow(0 0 18px rgba(255, 79, 135, 0.18));
+	pointer-events: none;
+}
+
+.heart-stage.is-visible {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.heart-grid {
+	position: absolute;
+	inset: 0;
+}
+
+.heart-dot {
+	position: absolute;
+	width: clamp(8px, 1.3vw, 14px);
+	height: clamp(8px, 1.3vw, 14px);
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 35%, #fff6fb 0%, #ff9cbc 28%, var(--heart) 70%, #d82463 100%);
+	box-shadow: 0 0 10px var(--heart-glow), 0 0 18px rgba(255, 79, 135, 0.25);
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.2);
+	animation: ledOn 700ms ease forwards;
+	animation-delay: var(--delay);
+}
+
+.ticker-shell {
+	width: min(100%, 1100px);
+	position: absolute;
+	left: 50%;
+	bottom: clamp(16px, 4vw, 36px);
+	border-radius: 999px;
+	padding: 14px 0;
+	background: rgba(255, 255, 255, 0.16);
+	border: 1px solid var(--panel-border);
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+	overflow: hidden;
+	opacity: 0;
+	transform: translateX(-50%) translateY(20px);
+	transition: opacity 500ms ease, transform 500ms ease;
+	pointer-events: none;
+}
+
+.ticker-shell.is-visible {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+.ticker-track {
+	display: flex;
+	width: max-content;
+	gap: 24px;
+	padding-inline: 18px;
+	animation: tickerScroll 24s linear infinite;
+	will-change: transform;
+}
+
+.ticker-group {
+	display: flex;
+	gap: 24px;
+}
+
+.ticker-card {
+	flex: 0 0 auto;
+	width: clamp(150px, 26vw, 250px);
+	min-height: clamp(72px, 12vw, 110px);
+	padding: 16px 18px;
+	border-radius: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.14);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.ticker-card--text {
+	font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.ticker-card--image {
+	border-style: dashed;
+	background:
+		linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.1)),
+		repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 10px, rgba(255, 255, 255, 0.04) 10px 20px);
+	color: rgba(255, 255, 255, 0.92);
+	font-size: 0.95rem;
+	font-weight: 700;
+}
+
+.ticker-card--image span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	border: 2px dashed rgba(255, 255, 255, 0.5);
+	padding: 14px;
+}
+
+.ticker-card--image small {
+	display: block;
+	margin-top: 4px;
+	opacity: 0.9;
+}
+
+@keyframes buttonDisappear {
+	0% {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+		filter: blur(0);
+	}
+	45% {
+		transform: scale(1.16) translateY(-4px) rotate(-1deg);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0.35) translateY(28px);
+		filter: blur(10px);
+	}
+}
+
+@keyframes particleBurst {
+	0% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.2) rotate(var(--rotation));
+	}
+}
+
+@keyframes ledOn {
+	0% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.15);
+	}
+	65% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1.12);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@keyframes tickerScroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.ticker-track {
+		animation: none;
+	}
+}
