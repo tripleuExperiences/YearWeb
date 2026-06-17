@@ -24,11 +24,11 @@ body {
 	min-height: 100svh;
 	overflow: hidden;
 	font-family: Arial, sans-serif;
-		width: min(96vw, 760px);
+	color: var(--text);
 	background:
 		radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.22), transparent 24%),
 		radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.2), transparent 18%),
-		top: 46%;
+		radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.18), transparent 20%),
 		linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
 }
 
@@ -38,8 +38,8 @@ body {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-		width: clamp(9px, 1.5vw, 16px);
-		height: clamp(9px, 1.5vw, 16px);
+	justify-content: center;
+	align-items: center;
 	gap: clamp(20px, 4vw, 36px);
 	padding: clamp(16px, 4vw, 40px);
 }
@@ -48,12 +48,12 @@ body {
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-		width: min(96vw, 1440px);
+	overflow: hidden;
 }
 
-		bottom: clamp(10px, 3vw, 24px);
+.center-button {
 	width: min(100%, 460px);
-		padding: 18px 0;
+	padding: clamp(18px, 3vw, 26px) clamp(40px, 8vw, 60px);
 	border: none;
 	border-radius: clamp(28px, 5vw, 38px);
 	background: linear-gradient(135deg, var(--button), #ff7aaa);
@@ -63,30 +63,30 @@ body {
 	line-height: 1;
 	cursor: pointer;
 	box-shadow: 0 18px 35px var(--button-shadow);
-		gap: 30px;
-		padding-inline: 22px;
-		animation: tickerScroll 30s linear infinite;
+	transition: transform 200ms ease, box-shadow 200ms ease, background-color 150ms ease, opacity 250ms ease, filter 250ms ease;
+	will-change: transform, box-shadow, opacity;
+	position: relative;
 	z-index: 2;
 }
 
 .center-button:hover {
 	background: linear-gradient(135deg, var(--button-hover), #ff6293);
-		gap: 30px;
+	transform: translateY(-2px) scale(1.03);
 	box-shadow: 0 24px 40px rgba(0, 0, 0, 0.22);
 }
 
 .center-button:focus-visible {
-		width: clamp(180px, 22vw, 310px);
-		min-height: clamp(86px, 14vw, 130px);
-		padding: 18px 20px;
-		border-radius: 28px;
+	outline: 3px solid rgba(255, 255, 255, 0.88);
+	outline-offset: 5px;
+}
+
 .center-button.is-exiting {
 	pointer-events: none;
 	animation: buttonDisappear 680ms ease forwards;
 }
 
 .particle {
-		font-size: clamp(1rem, 1.75vw, 1.35rem);
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	font-size: clamp(18px, 3.2vw, 34px);
@@ -97,7 +97,7 @@ body {
 }
 
 .heart-stage {
-		font-size: 1rem;
+	width: min(92vw, 560px);
 	aspect-ratio: 1 / 1;
 	position: absolute;
 	left: 50%;
@@ -206,9 +206,9 @@ body {
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	border-radius: 20px;
+	border-radius: 18px;
 	border: 2px dashed rgba(255, 255, 255, 0.5);
-	padding: 14px;
+	padding: 12px;
 }
 
 .ticker-card--image small {
