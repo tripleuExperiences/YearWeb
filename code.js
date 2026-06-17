@@ -129,15 +129,12 @@ function startCelebration() {
 
 	window.setTimeout(() => {
 		buildHeart();
-		heartStage.classList.add('is-visible');
-		heartStage.setAttribute('aria-hidden', 'false');
-	}, 600);
-
-	window.setTimeout(() => {
 		buildTicker();
+		heartStage.classList.add('is-visible');
 		tickerShell.classList.add('is-visible');
+		heartStage.setAttribute('aria-hidden', 'false');
 		tickerShell.setAttribute('aria-hidden', 'false');
-	}, 950);
+	}, 600);
 }
 
 celebrateButton.addEventListener('click', startCelebration);

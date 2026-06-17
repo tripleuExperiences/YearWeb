@@ -104,7 +104,7 @@ body {
 	width: min(82vmin, 620px);
 	aspect-ratio: 1 / 1;
 	max-width: 620px;
-	position: relative;
+	position: absolute;
 	margin-top: clamp(0px, 0.4vw, 4px);
 	opacity: 0;
 	transform: scale(0.92);
@@ -114,6 +114,7 @@ body {
 }
 
 .heart-stage.is-visible {
+	position: relative;
 	opacity: 1;
 	transform: scale(1);
 }
@@ -140,7 +141,7 @@ body {
 	width: min(94vw, 1600px);
 	height: clamp(230px, 36svh, 430px);
 	min-height: clamp(230px, 36svh, 430px);
-	position: relative;
+	position: absolute;
 	margin-inline: auto;
 	margin-top: clamp(0px, 0.4vw, 6px);
 	border-radius: clamp(18px, 2.6vw, 28px);
@@ -158,6 +159,7 @@ body {
 }
 
 .ticker-shell.is-visible {
+	position: relative;
 	opacity: 1;
 	transform: translateY(0);
 }
@@ -225,9 +227,9 @@ body {
 
 @media (min-width: 900px) {
 	.app {
-		justify-content: flex-start;
+		justify-content: center;
 		gap: 10px;
-		padding-top: clamp(12px, 2.8vh, 28px);
+		padding-top: 0;
 	}
 
 	.heart-stage {
@@ -321,15 +323,15 @@ body {
 @keyframes buttonDisappear {
 	0% {
 		opacity: 1;
-		transform: scale(1) translateY(0);
+		transform: translate(-50%, -50%) scale(1) translateY(0);
 		filter: blur(0);
 	}
 	45% {
-		transform: scale(1.16) translateY(-4px) rotate(-1deg);
+		transform: translate(-50%, -50%) scale(1.16) translateY(-4px) rotate(-1deg);
 	}
 	100% {
 		opacity: 0;
-		transform: scale(0.35) translateY(28px);
+		transform: translate(-50%, -50%) scale(0.35) translateY(28px);
 		filter: blur(10px);
 	}
 }
