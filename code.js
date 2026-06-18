@@ -10,15 +10,15 @@ const celebrationEmojis = ['🎉', '✨', '💖', '🥳', '🎊', '💫', '🪩'
 const tickerItems = [
 	{ type: 'text', value: 'Nuestro primer año juntitos' },
 	{ type: 'image', src: 'images/img1.jpeg' },
-	{ type: 'text', value: 'Gracias por cada momento' },
+	{ type: 'text', value: 'Gracias por todo tu tiempo y amor' },
 	{ type: 'image',  src: 'images/img2.jpeg' },
-	{ type: 'text', value: 'Siempre juntos' },
+	{ type: 'text', value: 'Por nuestra familia y nuestro futuro' },
 	{ type: 'image', src: 'images/img3.jpg' },
-	{ type: 'text', value: 'Más recuerdos por crear' },
+	{ type: 'text', value: 'Aún nos queda muchísimo por descubrir' },
 	{ type: 'image', src: 'images/img4.jpeg' },
-	{ type: 'text', value: 'Otro recuerdo más' },
+	{ type: 'text', value: 'No puedo esperar a seguir viviendo contigo' },
 	{ type: 'image', src: 'images/img5.jpg' },
-	{ type: 'text', value: 'Lo mejor todavía viene' },
+	{ type: 'text', value: 'Eres lo mejor que me ha pasado en la vida' },
 	{ type: 'image', src: 'images/img6.jpeg' },
 ];
 
