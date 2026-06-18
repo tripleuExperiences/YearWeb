@@ -4,8 +4,10 @@ const heartStage = document.getElementById('heartStage');
 const heartGrid = document.getElementById('heartGrid');
 const tickerShell = document.getElementById('tickerShell');
 const tickerTrack = document.getElementById('tickerTrack');
+const backgroundMusic = document.getElementById('backgroundMusic');
 
 const celebrationEmojis = ['🎉', '✨', '💖', '🥳', '🎊', '💫', '🪩', '⭐', '🍾', '💥'];
+const backgroundMusicVolume = 0.7;
 
 const tickerItems = [
 	{ type: 'text', value: 'Nuestro primer año juntitos' },
@@ -23,6 +25,10 @@ const tickerItems = [
 ];
 
 let celebrationStarted = false;
+
+if (backgroundMusic) {
+	backgroundMusic.volume = backgroundMusicVolume;
+}
 
 function createParticleBurst() {
 	const particleCount = 28;
@@ -127,6 +133,13 @@ function startCelebration() {
 	celebrationStarted = true;
 	celebrateButton.disabled = true;
 	celebrateButton.classList.add('is-exiting');
+
+	if (backgroundMusic) {
+		backgroundMusic.currentTime = 0;
+		backgroundMusic.play().catch(() => {
+			// Playback can still fail if the file is missing or unsupported.
+		});
+	}
 
 	createParticleBurst();
 
