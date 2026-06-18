@@ -9,17 +9,17 @@ const celebrationEmojis = ['🎉', '✨', '💖', '🥳', '🎊', '💫', '🪩'
 
 const tickerItems = [
 	{ type: 'text', value: 'Nuestro primer año juntitos' },
-	{ type: 'image', src: '/YearWeb/_Images/img1.jpeg' },
+	{ type: 'image', src: 'images/img1.jpeg' },
 	{ type: 'text', value: 'Gracias por cada momento' },
-	{ type: 'image',  src: '/YearWeb/_Images/img2.jpeg' },
+	{ type: 'image',  src: 'images/img2.jpeg' },
 	{ type: 'text', value: 'Siempre juntos' },
-	{ type: 'image', src: '/YearWeb/_Images/img3.jpg' },
+	{ type: 'image', src: 'images/img3.jpg' },
 	{ type: 'text', value: 'Más recuerdos por crear' },
-	{ type: 'image', src: '/YearWeb/_Images/img4.jpeg' },
+	{ type: 'image', src: 'images/img4.jpeg' },
 	{ type: 'text', value: 'Otro recuerdo más' },
-	{ type: 'image', src: '/YearWeb/_Images/img5.jpg' },
+	{ type: 'image', src: 'images/img5.jpg' },
 	{ type: 'text', value: 'Lo mejor todavía viene' },
-	{ type: 'image', src: '/YearWeb/_Images/img6.jpeg' },
+	{ type: 'image', src: 'images/img6.jpeg' },
 ];
 
 let celebrationStarted = false;
